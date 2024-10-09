@@ -16,6 +16,8 @@ export class BaseModule {
             key: options.key,
             qs: {
                 ...(options.tagName && { tag_name: options.tagName }),
+                ...(options.name && { name: options.name }),
+                ...(options.type && { type: options.type }),
                 per_page: options.pageSize || this.pageSize,
                 page: options.page || 1,
             },

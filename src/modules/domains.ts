@@ -74,17 +74,19 @@ export default class Domains extends BaseModule {
     /**
      * Get all Domain Records
      * @param domainName the Domain to get the records for
-     * @param [tagName] filter to only return Domains with a given tag
+     * @param [type] filter to only return Domains with a given type [A, AAAA, CAA, CNAME, MX, NS, TXT, SRV, SOA]
+     * @param [name] filter to only return Domains with a given name
      * @param [includeAll] return all Domains, paginated (optional)
      * @param [page] the specific page of Domains to return (optional)
      * @param [pageSize] the number of Domains to return per page (optional)
      * @returns Promise
      */
-    public getAllRecords(domainName: string, tagName: string, includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
+    public getAllRecords(domainName: string, type: string = '', name: string = '', includeAll: boolean = false, page: number = 1, pageSize: number = this.pageSize): Promise<any> {
         const requestOptions = this._getBasePaginatedRequestOptions({
             actionPath: `${this.basePath}/${encodeURIComponent(domainName)}/records`,
             key: 'domain_records',
-            tagName: tagName,
+            type: type,
+            name: name,
             pageSize: pageSize,
             page: page,
             includeAll: includeAll,
