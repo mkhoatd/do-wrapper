@@ -1,0 +1,31 @@
+name: Publish Github package
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'  # Hoặc phiên bản Node.js bạn đang sử dụng
+        registry-url: https://npm.pkg.github.com
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build project
+      run: npm run build  # Lệnh để xây dựng dự án của bạn
+
+    - name: Publish package
+      run: npm publish --access=public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Sử dụng GitHub Token để xác thực
