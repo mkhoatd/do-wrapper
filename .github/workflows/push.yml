@@ -16,16 +16,19 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '18'  # Hoặc phiên bản Node.js bạn đang sử dụng
+        node-version: '18' 
         registry-url: https://npm.pkg.github.com
 
     - name: Install dependencies
       run: npm install
 
+    - name: Run test
+      run: npm test
+
     - name: Build project
-      run: npm run build  # Lệnh để xây dựng dự án của bạn
+      run: npm run build:dist
 
     - name: Publish package
       run: npm publish --access=public
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Sử dụng GitHub Token để xác thực
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
