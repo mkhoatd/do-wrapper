@@ -3,11 +3,14 @@
   "version": "4.5.1",
   "description": "Node.js Wrapper for Digital Ocean API v2",
   "author": "Matt Major",
-  "homepage": "https://github.com/matt-major/do-wrapper",
+  "homepage": "https://github.com/minhnqn/do-wrapper.git",
   "repository": {
     "type": "git",
-    "url": "https://github.com/matt-major/do-wrapper.git"
+    "url": "https://github.com/minhnqn/do-wrapper.git"
   },
+  "publishConfig": {
+  "registry": "https://npm.pkg.github.com/"
+},
   "main": "./dist/do-wrapper.js",
   "types": "./dist/do-wrapper.d.ts",
   "scripts": {
